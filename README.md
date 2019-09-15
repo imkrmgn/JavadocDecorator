@@ -1,0 +1,2 @@
+# JavadocDecorator
+Eclipseプラグインです。パッケージエクスプローラ等に表示されるJavaの要素にJavadocの先頭部分を表示します。

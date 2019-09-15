@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="false"
+            class="com.github.imkrmgn.javadocdecorator.JavadocDecorator"
+            id="com.github.imkrmgn.eclipse.plugins.decorator.JavadocDecorator"
+            label="Javadoc Decorator"
+            lightweight="false"
+            state="true">
+         <enablement>
+           <or>
+             <objectClass
+                name="org.eclipse.jdt.core.ICompilationUnit">
+             </objectClass>
+             <objectClass
+                name="org.eclipse.jdt.core.IMember">
+             </objectClass>
+           </or>
+         </enablement>
+      </decorator>
+   </extension>
+</plugin>

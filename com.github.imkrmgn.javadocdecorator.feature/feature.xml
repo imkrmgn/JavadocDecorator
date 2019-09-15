@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.github.imkrmgn.javadocdecorator.feature"
+      label="JavadocDecorator"
+      version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [ここにフィーチャーの説明を入力してください。]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [ここに Copyright の説明を入力してください。]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [ここにライセンスの説明を入力してください。]
+   </license>
+
+   <plugin
+         id="com.github.imkrmgn.javadocdecorator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

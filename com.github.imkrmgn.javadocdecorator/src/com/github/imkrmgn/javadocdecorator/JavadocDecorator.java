@@ -80,21 +80,20 @@ public class JavadocDecorator implements ILabelDecorator {
      */
     private String getJavadocFirstLine(IMember member) {
         try (BufferedReader bufReader = getJavadocReader(member)) {
-            String line;
-            do {
-                line = bufReader.readLine();
-                if (line == null) {
+
+            String line = getJavadocFirstLine(bufReader);
+
+            if (line == null) {
+                return null;
+            }
+            if (line.startsWith("@")) {
+                if (member instanceof IMethod) {
+                    return getReturnTagValue(line, bufReader);
+                } else {
                     return null;
                 }
-                line = line.trim();
-                if (line.startsWith("@")) {
-                    if (member instanceof IMethod) {
-                        return getReturnTagValue(line, bufReader);
-                    } else {
-                        return null;
-                    }
-                }
-            } while (line.isEmpty());
+            }
+
             return line;
         } catch (JavaModelException | IOException e) {
             return null;
@@ -111,6 +110,21 @@ public class JavadocDecorator implements ILabelDecorator {
             return null;
         }
         return new BufferedReader(reader);
+    }
+
+    /**
+     * @return 1行目
+     */
+    private String getJavadocFirstLine(BufferedReader bufReader) throws IOException {
+        for (String line = bufReader.readLine();
+                line != null;
+                line = bufReader.readLine()) {
+            line = line.trim();
+            if (!line.isEmpty()) {
+                return line;
+            }
+        };
+        return null;
     }
 
     /**

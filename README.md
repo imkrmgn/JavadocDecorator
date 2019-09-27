@@ -1,6 +1,6 @@
 # JavadocDecorator
 
-This plugin is very simple. Decorate Java elements with Javadoc
+This is very simple eclipse plug-in Decorate Java elements with Javadoc
 headings or method return values.  
 Just installing it will help you get a quick overview of the
 class library.

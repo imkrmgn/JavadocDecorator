@@ -1,3 +1,13 @@
+/*-******************************************************************************
+ * (c) 2019 Yoshiyuki Takemori.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *    Yoshiyuki Takemori
+ *******************************************************************************/
 package com.github.imkrmgn.javadocdecorator;
 
 import java.io.BufferedReader;
@@ -16,10 +26,9 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Java要素をJavadocの1行目のテキストで装飾する。
+ * Java要素をJavadocの見出し（1行目）または戻り値の説明で装飾する。
  *
- * @author imkrmgn
- * @since 2019-09-15
+ * @author Yoshiyuki Takemori
  */
 public class JavadocDecorator implements ILabelDecorator {
 
@@ -37,7 +46,7 @@ public class JavadocDecorator implements ILabelDecorator {
         if (member == null) {
             return null;
         }
-        String line = getJavadocFirstLine(member);
+        String line = getDecoration(member);
         if (line == null) {
             return null;
         }
@@ -75,11 +84,11 @@ public class JavadocDecorator implements ILabelDecorator {
     }
 
     /**
-     * member からJavadocの1行目を取得する。
+     * member からJavadocの見出し（1行目）または戻り値の説明を取得する。
      * @param member
-     * @return 取得できなかった場合 null
+     * @return 見出しまたは戻り値の説明。取得できなかった場合 null
      */
-    private String getJavadocFirstLine(IMember member) {
+    private String getDecoration(IMember member) {
         try (BufferedReader bufReader = getJavadocReader(member)) {
 
             String firstLine = getJavadocFirstLine(bufReader);
@@ -125,6 +134,7 @@ public class JavadocDecorator implements ILabelDecorator {
     }
 
     /**
+     * @param firstLine 1行目
      * @return 見出し行なら true
      */
     private boolean isHeadingLine(String firstLine) {
@@ -132,7 +142,10 @@ public class JavadocDecorator implements ILabelDecorator {
     }
 
     /**
+     * @param firstLine 1行目
+     * @param bufReader
      * @return 戻り値の説明
+     * @throws IOException
      */
     private String getReturnTagValue( String firstLine, BufferedReader bufReader) throws IOException {
         for (String line = firstLine;

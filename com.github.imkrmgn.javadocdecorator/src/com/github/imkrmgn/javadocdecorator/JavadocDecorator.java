@@ -34,13 +34,14 @@ public class JavadocDecorator implements ILabelDecorator {
     @Override
     public String decorateText(String text, Object element) {
         IMember member = getMember(element);
-        if (member != null) {
-            String line = getJavadocFirstLine(member);
-            if (line != null) {
-                return text + " " + line;
-            }
+        if (member == null) {
+            return null;
         }
-        return text;
+        String line = getJavadocFirstLine(member);
+        if (line == null) {
+            return null;
+        }
+        return text + " " + line;
     }
 
     /**

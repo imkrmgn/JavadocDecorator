@@ -2,11 +2,14 @@
 <feature
       id="com.github.imkrmgn.javadocdecorator.feature"
       label="JavadocDecorator"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="imkrmgn">
 
    <description>
-      This plugin decorates Java elements with the first line of Javadoc.
+      This plugin is very simple. Decorate Java elements with Javadoc
+headings or method return values.
+Just installing it will help you get a quick overview of the
+class library.
    </description>
 
    <copyright>
@@ -277,8 +280,8 @@ No third-party beneficiary rights are created under this Agreement.
 
 Exhibit A - Form of Secondary Licenses Notice
 
-&quot;This Source Code may also be made available under the following 
-Secondary Licenses when the conditions for such availability set forth 
+&quot;This Source Code may also be made available under the following
+Secondary Licenses when the conditions for such availability set forth
 in the Eclipse Public License, v. 2.0 are satisfied: {name license(s),
 version(s), and exceptions or additional permissions here}.&quot;
 
@@ -301,6 +304,6 @@ version(s), and exceptions or additional permissions here}.&quot;
          id="com.github.imkrmgn.javadocdecorator"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="1.1.0.qualifier"/>
 
 </feature>

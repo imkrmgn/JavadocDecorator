@@ -90,7 +90,9 @@ public class JavadocDecorator implements ILabelDecorator {
      */
     private String getDecoration(IMember member) {
         try (BufferedReader bufReader = getJavadocReader(member)) {
-
+            if (bufReader == null ) {
+                return null;
+            }
             String firstLine = getJavadocFirstLine(bufReader);
 
             if (isHeadingLine(firstLine)) {

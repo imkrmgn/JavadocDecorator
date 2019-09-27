@@ -79,16 +79,7 @@ public class JavadocDecorator implements ILabelDecorator {
      * @return 取得できなかった場合 null
      */
     private String getJavadocFirstLine(IMember member) {
-        try {
-            ISourceRange javadocRange = member.getJavadocRange();
-            if (javadocRange == null) {
-                return null;
-            }
-            Reader reader = JavadocContentAccess.getContentReader(member, false);
-            if (reader == null) {
-                return null;
-            }
-            BufferedReader bufReader = new BufferedReader(reader);
+        try (BufferedReader bufReader = getJavadocReader(member)) {
             String line;
             do {
                 line = bufReader.readLine();
@@ -108,6 +99,18 @@ public class JavadocDecorator implements ILabelDecorator {
         } catch (JavaModelException | IOException e) {
             return null;
         }
+    }
+
+    private BufferedReader getJavadocReader(IMember member) throws JavaModelException {
+        ISourceRange javadocRange = member.getJavadocRange();
+        if (javadocRange == null) {
+            return null;
+        }
+        Reader reader = JavadocContentAccess.getContentReader(member, false);
+        if (reader == null) {
+            return null;
+        }
+        return new BufferedReader(reader);
     }
 
     /**

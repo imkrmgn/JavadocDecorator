@@ -6,6 +6,7 @@ import java.io.Reader;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMember;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
@@ -96,7 +97,11 @@ public class JavadocDecorator implements ILabelDecorator {
                 }
                 line = line.trim();
                 if (line.startsWith("@")) {
-                    return null;
+                    if (member instanceof IMethod) {
+                        return getReturnTagValue(line, bufReader);
+                    } else {
+                        return null;
+                    }
                 }
             } while (line.isEmpty());
             return line;
@@ -104,6 +109,23 @@ public class JavadocDecorator implements ILabelDecorator {
             return null;
         }
     }
+
+    /**
+     * @return 戻り値の説明
+     */
+    private String getReturnTagValue( String firstLine, BufferedReader bufReader) throws IOException {
+        for (String line = firstLine;
+                line != null;
+                line = bufReader.readLine()) {
+            line = line.trim();
+            if (line.startsWith("@return")) {
+                final String returnTagValue = line.replaceFirst("^@return\\s+", "");
+                return returnTagValue.isEmpty() ? null : returnTagValue;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public void addListener(ILabelProviderListener listener) {

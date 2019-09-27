@@ -81,20 +81,16 @@ public class JavadocDecorator implements ILabelDecorator {
     private String getJavadocFirstLine(IMember member) {
         try (BufferedReader bufReader = getJavadocReader(member)) {
 
-            String line = getJavadocFirstLine(bufReader);
+            String firstLine = getJavadocFirstLine(bufReader);
 
-            if (line == null) {
+            if (isHeadingLine(firstLine)) {
+                return firstLine;
+            }
+            if (member instanceof IMethod) {
+                return getReturnTagValue(firstLine, bufReader);
+            } else {
                 return null;
             }
-            if (line.startsWith("@")) {
-                if (member instanceof IMethod) {
-                    return getReturnTagValue(line, bufReader);
-                } else {
-                    return null;
-                }
-            }
-
-            return line;
         } catch (JavaModelException | IOException e) {
             return null;
         }
@@ -125,6 +121,13 @@ public class JavadocDecorator implements ILabelDecorator {
             }
         };
         return null;
+    }
+
+    /**
+     * @return 見出し行なら true
+     */
+    private boolean isHeadingLine(String firstLine) {
+        return firstLine != null && !firstLine.startsWith("@");
     }
 
     /**

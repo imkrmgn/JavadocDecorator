@@ -13,7 +13,7 @@
          <enablement>
            <or>
              <objectClass
-                name="org.eclipse.jdt.core.ICompilationUnit">
+                name="org.eclipse.jdt.core.ITypeRoot">
              </objectClass>
              <objectClass
                 name="org.eclipse.jdt.core.IMember">

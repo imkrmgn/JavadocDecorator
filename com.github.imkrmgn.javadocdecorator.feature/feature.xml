@@ -2,14 +2,12 @@
 <feature
       id="com.github.imkrmgn.javadocdecorator.feature"
       label="JavadocDecorator"
-      version="1.1.0.qualifier"
+      version="1.2.0.qualifier"
       provider-name="imkrmgn">
 
    <description>
-      This plugin is very simple. Decorate Java elements with Javadoc
-headings or method return values.
-Just installing it will help you get a quick overview of the
-class library.
+      This plugin is very simple. Decorate Java elements with Javadoc headings or method return values.
+Just installing it will help you get a quick overview of the class library.
    </description>
 
    <copyright>
@@ -304,6 +302,6 @@ version(s), and exceptions or additional permissions here}.&quot;
          id="com.github.imkrmgn.javadocdecorator"
          download-size="0"
          install-size="0"
-         version="1.1.0.qualifier"/>
+         version="1.2.0.qualifier"/>
 
 </feature>

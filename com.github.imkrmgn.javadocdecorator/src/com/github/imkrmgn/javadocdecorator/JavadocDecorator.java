@@ -14,11 +14,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMember;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavadocContentAccess;
 import org.eclipse.jface.viewers.ILabelDecorator;
@@ -59,19 +59,11 @@ public class JavadocDecorator implements ILabelDecorator {
      * @return 有効なインスタンスを取得できなかった場合 null
      */
     private IMember getMember(Object element) {
-        if (element instanceof ICompilationUnit) {
+        if (element instanceof ITypeRoot) {
 
-            ICompilationUnit compUnit = (ICompilationUnit) element;
-            IType[] types;
-            try {
-                types = compUnit.getTypes();
-            } catch (JavaModelException e) {
-                return null;
-            }
-            if (types.length == 0) {
-                return null;
-            }
-            return types[0];
+            ITypeRoot typeRoot = (ITypeRoot) element;
+            IType primaryType = typeRoot.findPrimaryType();
+            return primaryType;
 
         } else if (element instanceof IMember) {
 

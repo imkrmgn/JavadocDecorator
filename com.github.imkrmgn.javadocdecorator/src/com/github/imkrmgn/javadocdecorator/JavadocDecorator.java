@@ -155,7 +155,7 @@ public class JavadocDecorator implements ILabelDecorator {
                 line = bufReader.readLine()) {
             line = line.trim();
             if (line.startsWith("@return")) {
-                final String returnTagValue = line.replaceFirst("^@return\\s+", "");
+                final String returnTagValue = line.replaceFirst("^@return\\s*", "");
                 return returnTagValue.isEmpty() ? null : returnTagValue;
             }
         }

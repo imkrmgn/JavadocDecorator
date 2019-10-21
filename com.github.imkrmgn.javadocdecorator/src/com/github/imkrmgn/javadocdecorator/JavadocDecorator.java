@@ -16,7 +16,6 @@ import java.io.Reader;
 
 import org.eclipse.jdt.core.IMember;
 import org.eclipse.jdt.core.IMethod;
-import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.JavaModelException;
@@ -101,10 +100,6 @@ public class JavadocDecorator implements ILabelDecorator {
     }
 
     private BufferedReader getJavadocReader(IMember member) throws JavaModelException {
-        ISourceRange javadocRange = member.getJavadocRange();
-        if (javadocRange == null) {
-            return null;
-        }
         Reader reader = JavadocContentAccess.getContentReader(member, false);
         if (reader == null) {
             return null;

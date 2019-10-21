@@ -2,7 +2,7 @@
 <feature
       id="com.github.imkrmgn.javadocdecorator.feature"
       label="JavadocDecorator"
-      version="1.2.0.qualifier"
+      version="1.2.1.qualifier"
       provider-name="imkrmgn">
 
    <description>
@@ -302,6 +302,6 @@ version(s), and exceptions or additional permissions here}.&quot;
          id="com.github.imkrmgn.javadocdecorator"
          download-size="0"
          install-size="0"
-         version="1.2.0.qualifier"/>
+         version="1.2.1.qualifier"/>
 
 </feature>

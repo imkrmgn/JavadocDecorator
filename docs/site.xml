@@ -3,5 +3,5 @@
    <description name="JavadocDecorator update site." url="https://imkrmgn.github.com/JavadocDecorator">
       JavadocDecorator update site.
    </description>
-   <feature url="features/com.github.imkrmgn.javadocdecorator.feature_1.2.0.201910071349.jar" id="com.github.imkrmgn.javadocdecorator.feature" version="1.2.0.201910071349"/>
+   <feature url="features/com.github.imkrmgn.javadocdecorator.feature_1.2.1.201910220049.jar" id="com.github.imkrmgn.javadocdecorator.feature" version="1.2.1.201910220049"/>
 </site>
